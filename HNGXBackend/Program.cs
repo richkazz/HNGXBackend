@@ -16,13 +16,13 @@ app.UseHttpsRedirection();
 
 app.MapGet("/api", (string slack_name, string track) =>
 {
-    var today = DateTime.Now;
+    var today = DateTime.UtcNow;
     return Results.Ok(
         new
         {
             slack_name = slack_name,
             current_day = today.ToString("dddd"),
-            utc_time = today.ToUniversalTime(),
+            utc_time = today.ToString("yyyy-MM-ddTHH:mm:ssZ"),
             track = track,
             github_file_url = "https://github.com/richkazz/HNGXBackend/blob/master/HNGXBackend/Program.cs",
             github_repo_url = "https://github.com/richkazz/HNGXBackend",
