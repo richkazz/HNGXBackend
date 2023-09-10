@@ -9,12 +9,8 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
@@ -28,8 +24,8 @@ app.MapGet("/api", (string slack_name, string track) =>
             current_day = today.ToString("dddd"),
             utc_time = today.ToUniversalTime(),
             track = track,
-            github_file_url = "https://github.com/username/repo/blob/main/file_name.ext",
-            github_repo_url = "https://github.com/username/repo",
+            github_file_url = "https://github.com/richkazz/HNGXBackend/blob/master/HNGXBackend/Program.cs",
+            github_repo_url = "https://github.com/richkazz/HNGXBackend",
             status_code = 200
         });
 })
